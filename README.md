@@ -1,1 +1,3 @@
-# stochastic-methods
+# numerical-examples
+
+A collection of numerical examples.

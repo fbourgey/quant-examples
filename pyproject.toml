@@ -1,7 +1,7 @@
 [project]
-name = "numerical-examples"
+name = "quant-examples"
 version = "0.1.0"
-description = "Add your description here"
+description = "Collection of quantitative finance examples and tutorials."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [

@@ -30,6 +30,7 @@ def simulate_brownian_motion(T, n_steps, n_mc, seed=1234):
     bm_paths = np.insert(bm_paths, 0, 0, axis=0)  # insert B_0 = 0 at the beginning
     return tab_t, bm_paths
 
+
 def simulate_brownian_bridge(a, b, t0, t1, n_steps, n_mc, seed=1234):
     """Simulate Brownian bridge paths from a to b over [t0, t1].
 

@@ -208,7 +208,5 @@ __marimo__/
 .DS_Store
 
 # Jupyter Notebooks (working files)
-ivi_scheme.ipynb
-levy_construction_brownian_motion.ipynb
 modern_portfolio_theory.ipynb
 black_litterman.ipynb

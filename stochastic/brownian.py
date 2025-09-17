@@ -65,3 +65,94 @@ def simulate_brownian_bridge(a, b, t0, t1, n_steps, n_mc, seed=1234):
     bridge_paths = bm_paths - (tab_t[:, None] - t0) / T * (bm_paths[-1, :] - (b - a))
     bridge_paths += a  # start at a
     return tab_t, bridge_paths
+
+
+def generate_haar_functions(j:int, t):
+    """Compute Haar functions at level j.
+
+    Parameters
+    ----------
+    j : int
+        Level parameter (creates 2^j functions).
+    t : array_like
+        Time points where functions are evaluated.
+
+    Returns
+    -------
+    list of ndarray
+        List of 2^j Haar functions H_{2^j+k} for k=0,...,2^j-1.
+    """
+
+    haar_functions = []
+
+    for k in range(2**j):
+        t_min = k / 2**j
+        t_mid = (k + 0.5) / 2**j
+        t_max = (k + 1) / 2**j
+        haar_functions.append(
+            2 ** (j / 2) * (t >= t_min) * (t < t_mid)
+            - 2 ** (j / 2) * (t >= t_mid) * (t < t_max)
+            + 0.0 * t
+        )
+
+    return haar_functions
+
+
+def generate_schauder_functions(j, t):
+    """Compute Schauder functions at level j.
+
+    Parameters
+    ----------
+    j : int
+        Level parameter (creates 2^j functions).
+    t : array_like
+        Time points where functions are evaluated.
+
+    Returns
+    -------
+    list of ndarray
+        List of 2^j Schauder functions S_{2^j+k} for k=0,...,2^j-1.
+    """
+
+    schauder_functions = []
+
+    for k in range(2**j):
+        t_min = k / 2**j
+        t_mid = (k + 0.5) / 2**j
+        t_max = (k + 1) / 2**j
+        schauder_functions.append(
+            2 ** (j / 2) * (t - t_min) * (t >= t_min) * (t < t_mid)
+            + 2 ** (j / 2) * ((k + 1) / 2**j - t) * (t >= t_mid) * (t < t_max)
+            + 0.0 * t
+        )
+
+    return schauder_functions
+
+
+def simulate_brownian_levy_construction(t, L, seed=1234):
+    """Simulate Brownian motion using Lévy-Ciesielski construction.
+
+    Parameters
+    ----------
+    t : array_like
+        Time points for evaluation.
+    L : int
+        Maximum level of Schauder expansion.
+    seed : int, optional
+        Random seed for reproducibility.
+
+    Returns
+    -------
+    ndarray
+        Brownian motion values at times t.
+    """
+    np.random.seed(seed)
+    N_L = 2 ** (L + 1)
+    Z = np.random.normal(0, 1, N_L)
+    t = np.array(np.atleast_1d(t))
+    brownian_levy = t * Z[0]
+    for j in range(L + 1):
+        schauder_functions = generate_schauder_functions(j, t)
+        for k in range(2**j):
+            brownian_levy += schauder_functions[k] * Z[2**j + k]
+    return brownian_levy

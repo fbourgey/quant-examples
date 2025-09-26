@@ -210,3 +210,7 @@ __marimo__/
 # Jupyter Notebooks (working files)
 modern_portfolio_theory.ipynb
 black_litterman.ipynb
+copula.ipynb
+extreme_value_theory.ipynb
+euler_milstein.ipynb
+hidden_markov_models.ipynb

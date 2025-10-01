@@ -214,3 +214,4 @@ copula.ipynb
 extreme_value_theory.ipynb
 euler_milstein.ipynb
 hidden_markov_models.ipynb
+dynamic_beta_kalman_filter.ipynb

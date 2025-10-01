@@ -7,9 +7,12 @@ numerical methods, stochastic processes, and simulation.
 
 - [brownian_bridge.ipynb](./brownian_bridge.ipynb): Brownian Bridge construction and applications.
 - [cos_method.ipynb](./cos_method.ipynb): COS method for option pricing.
-- [gaussian_pca.ipynb](./gaussian_pca.ipynb): Principal Component Analysis of two-dimensional Gaussian data.
 - [fractional_brownian_motion.ipynb](./fractional_brownian_motion.ipynb): Fractional Brownian Motion construction.
+- [gaussian_mixture_model.ipynb](./gaussian_mixture_model.ipynb): Gaussian Mixture Model and Expectation-Maximization algorithm.
+- [gaussian_pca.ipynb](./gaussian_pca.ipynb): Principal Component Analysis of two-dimensional Gaussian data.
 - [levy_construction_brownian_motion.ipynb](./levy_construction_brownian_motion.ipynb): Lévy's construction of Brownian Motion.
+- [inverse_gaussian.ipynb](./inverse_gaussian.ipynb): Inverse Gaussian distribution and applications.
+- [yield_curve_pca.ipynb](./yield_curve_pca.ipynb): PCA on yield curve data.
 
 ## Python Installation Guide
 

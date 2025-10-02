@@ -7,6 +7,8 @@ numerical methods, stochastic processes, and simulation.
 
 - [brownian_bridge.ipynb](./brownian_bridge.ipynb): Brownian Bridge construction and applications.
 - [cos_method.ipynb](./cos_method.ipynb): COS method for option pricing.
+- [dynamic_beta_kalman_filter.ipynb](./dynamic_beta_kalman_filter.ipynb): Dynamic Beta model using Kalman filtering.
+- [euler_milstein.ipynb](./euler_milstein.ipynb): Euler and Milstein schemes for SDEs.
 - [fractional_brownian_motion.ipynb](./fractional_brownian_motion.ipynb): Fractional Brownian Motion construction.
 - [gaussian_mixture_model.ipynb](./gaussian_mixture_model.ipynb): Gaussian Mixture Model and Expectation-Maximization algorithm.
 - [gaussian_pca.ipynb](./gaussian_pca.ipynb): Principal Component Analysis of two-dimensional Gaussian data.

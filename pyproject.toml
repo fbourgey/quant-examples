@@ -5,6 +5,7 @@ description = "Collection of quantitative finance examples and tutorials."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "hmmlearn>=0.3.3",
     "ipykernel>=6.30.1",
     "ipywidgets>=8.1.7",
     "jupyter>=1.1.1",

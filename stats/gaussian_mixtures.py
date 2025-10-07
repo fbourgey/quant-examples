@@ -1,8 +1,8 @@
 import numpy as np
-from scipy.stats import multivariate_normal
+from scipy import stats
 
 
-def gaussian_mixture_pdf(x, weights, means, covariances):
+def gaussian_mixture_pdf(x, weights, means, variances):
     """
     Compute the probability density function of a Gaussian Mixture Model.
 
@@ -14,8 +14,8 @@ def gaussian_mixture_pdf(x, weights, means, covariances):
         Weights of each Gaussian component. Must sum to 1.
     means : array_like, shape (n_components, n_features)
         Means of each Gaussian component.
-    covariances : array_like, shape (n_components, n_features, n_features)
-        Covariance matrices of each Gaussian component.
+    variances : array_like, shape (n_components, n_features)
+        Variances of each Gaussian component.
 
     Returns
     -------
@@ -29,29 +29,24 @@ def gaussian_mixture_pdf(x, weights, means, covariances):
     """
     x = np.atleast_1d(np.asarray(x))
     weights = np.atleast_1d(np.asarray(weights))
-    means = np.atleast_2d(np.asarray(means))
-    covariances = np.atleast_3d(np.asarray(covariances))
+    means = np.atleast_1d(np.asarray(means))
+    variances = np.atleast_1d(np.asarray(variances))
+    n_components = len(weights)
 
     if weights.sum() != 1:
         raise ValueError("Weights must sum to 1.")
 
-    if means.ndim != 2 or means.shape[0] != weights.shape[0]:
-        raise ValueError(
-            "Means must be a 2D array with shape (n_components, n_features)."
-        )
+    if means.shape[0] != n_components:
+        raise ValueError("Means must be of shape (n_components,).")
 
-    if covariances.ndim != 3 or covariances.shape[0] != weights.shape[0]:
-        raise ValueError(
-            "Covariances must be a 3D array with shape "
-            "(n_components, n_features, n_features)."
-        )
+    if variances.shape[0] != n_components:
+        raise ValueError("Variances must be of shape (n_components,).")
 
-    n_components = len(weights)
     pdf_values = np.zeros(x.shape[0])
 
     for i in range(n_components):
-        pdf_values += weights[i] * multivariate_normal.pdf(
-            x, mean=means[i], cov=covariances[i]
+        pdf_values += weights[i] * stats.norm.pdf(
+            x, loc=means[i], scale=np.sqrt(variances[i])
         )
 
     return pdf_values

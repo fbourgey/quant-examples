@@ -13,6 +13,7 @@ numerical methods, stochastic processes, and simulation.
 - [gaussian_mixture_models.ipynb](./gaussian_mixture_models.ipynb): Gaussian Mixture Model and Expectation-Maximization algorithm.
 - [gaussian_pca.ipynb](./gaussian_pca.ipynb): Principal Component Analysis of two-dimensional Gaussian data.
 - [levy_construction_brownian_motion.ipynb](./levy_construction_brownian_motion.ipynb): Lévy's construction of Brownian Motion.
+- [ica_pca.ipynb](./ica_pca.ipynb): Independent Component Analysis (ICA).
 - [inverse_gaussian.ipynb](./inverse_gaussian.ipynb): Inverse Gaussian distribution and applications.
 - [pandas_datareader.ipynb](./pandas_datareader.ipynb): Examples using the Pandas Datareader package.
 - [yield_curve_pca.ipynb](./yield_curve_pca.ipynb): PCA on yield curve data.
